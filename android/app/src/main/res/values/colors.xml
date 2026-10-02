@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Light theme: white and Farzonline green. The logo green (#04FA73) is too pale for text on
+     white, so primary is a deeper shade; the dark theme (values-night) uses the logo green itself. -->
+<resources>
+    <color name="ic_launcher_background">#111315</color>
+    <color name="brand_green">#04FA73</color>
+    <color name="primary">#00873F</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#B7F7D0</color>
+    <color name="on_primary_container">#00210E</color>
+    <color name="secondary_container">#DCEFE3</color>
+    <color name="on_secondary_container">#0F2117</color>
+    <color name="background">#F6F8F7</color>
+    <color name="on_surface">#111413</color>
+    <color name="on_surface_variant">#5D6461</color>
+    <color name="outline">#C3CAC6</color>
+    <color name="surface_container_low">#F0F3F1</color>
+    <color name="surface_container">#EAEEEC</color>
+    <color name="surface_container_high">#E4E9E6</color>
+    <color name="surface_container_highest">#DFE4E1</color>
+    <bool name="light_bars">true</bool>
+</resources>

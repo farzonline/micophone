@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark theme: near black and the Farzonline logo green, like the PC app. -->
+<resources>
+    <color name="primary">#04FA73</color>
+    <color name="on_primary">#02140A</color>
+    <color name="primary_container">#0D3B22</color>
+    <color name="on_primary_container">#9DFFC4</color>
+    <color name="secondary_container">#1E2A23</color>
+    <color name="on_secondary_container">#D4F5DF</color>
+    <color name="background">#0B0C0D</color>
+    <color name="on_surface">#F2F5F3</color>
+    <color name="on_surface_variant">#9AA19D</color>
+    <color name="outline">#3A413D</color>
+    <color name="surface_container_low">#111315</color>
+    <color name="surface_container">#15181A</color>
+    <color name="surface_container_high">#1C2023</color>
+    <color name="surface_container_highest">#23282B</color>
+    <bool name="light_bars">false</bool>
+</resources>

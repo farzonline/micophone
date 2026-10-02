@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Micophone</string>
+    <string name="tagline">Use your phone as your PC\'s microphone. Run Micophone on the PC first.</string>
+
+    <string name="mode_wifi">Wi-Fi</string>
+    <string name="mode_usb">USB cable</string>
+    <string name="pc_address">PC address</string>
+    <string name="pc_found">PC: %1$s</string>
+    <string name="find_pc">Find PC on this Wi-Fi</string>
+    <string name="searching">Searching…</string>
+    <string name="choose_pc">Choose your PC</string>
+    <string name="no_pc_title">No PC found</string>
+    <string name="no_pc_body">Make sure Micophone is open on the PC and both devices are on the same Wi-Fi. On the PC, press “Allow” next to Firewall if shown. You can also type the PC address shown in the PC app.</string>
+    <string name="usb_help">1. On the phone, turn on Developer options › USB debugging.\n2. Connect the cable and tap “Allow” on the prompt.\n3. Keep Micophone open on the PC. It sets up the USB link by itself.</string>
+    <string name="noise_suppression">Noise suppression</string>
+    <string name="port">Port</string>
+    <string name="start">Start microphone</string>
+    <string name="stop">Stop</string>
+    <string name="mute">Mute</string>
+    <string name="unmute">Unmute</string>
+    <string name="ready">Ready</string>
+
+    <string name="err_no_pc">Find your PC or type its address</string>
+    <string name="err_port">1–65535</string>
+    <string name="err_permission">Micophone needs the microphone permission to work.</string>
+    <string name="permission_title">Microphone permission is off</string>
+    <string name="permission_body">Turn on the microphone permission for Micophone in Settings.</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="err_mic_unavailable">Can\'t open the microphone. Another app may be using it.</string>
+    <string name="err_mic_busy">The microphone is in use by another app (a call or recorder).</string>
+    <string name="err_mic_read">Microphone stopped working (error %1$d).</string>
+
+    <string name="st_connected">Live on %1$s</string>
+    <string name="st_connected_usb">Live on %1$s over USB</string>
+    <string name="st_busy">%1$s is busy with another phone</string>
+    <string name="st_looking">Connecting to %1$s… Is Micophone open on the PC?</string>
+    <string name="st_lost">Connection to %1$s lost. Reconnecting…</string>
+    <string name="st_bad_host">Can\'t find %1$s on this network</string>
+    <string name="st_usb_waiting">Waiting for the PC over USB… Check the cable, USB debugging, and that Micophone is open on the PC.</string>
+    <string name="muted_suffix">%1$s (muted)</string>
+
+    <string name="channel_name">Streaming</string>
+    <string name="notif_title">Micophone is on</string>
+    <string name="notif_title_muted">Micophone is muted</string>
+</resources>

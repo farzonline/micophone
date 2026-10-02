@@ -1,0 +1,14 @@
+# Windows file properties for Micophone.exe (keep in sync with VERSION in micophone_gui.py).
+VSVersionInfo(
+  ffi=FixedFileInfo(filevers=(2, 0, 0, 0), prodvers=(2, 0, 0, 0)),
+  kids=[
+    StringFileInfo([StringTable("040904B0", [
+      StringStruct("ProductName", "Micophone"),
+      StringStruct("FileDescription", "Micophone - use your phone as a PC microphone"),
+      StringStruct("FileVersion", "2.0.0"),
+      StringStruct("ProductVersion", "2.0.0"),
+      StringStruct("OriginalFilename", "Micophone.exe"),
+    ])]),
+    VarFileInfo([VarStruct("Translation", [0x0409, 1200])]),
+  ],
+)

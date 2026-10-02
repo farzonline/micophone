@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r pc/requirements.txt
+      - run: python test_receiver.py
+        working-directory: pc
+      - run: python theme.py
+        working-directory: pc
+      - name: Build the window offscreen (smoke test)
+        run: python micophone_gui.py --smoke
+        working-directory: pc
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew assembleDebug lintDebug --console=plain
+        working-directory: android

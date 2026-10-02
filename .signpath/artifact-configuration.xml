@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Paste this into the "micophone" project's artifact configuration on signpath.io.
+     It matches the zip that .github/workflows/release.yml submits. -->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <pe-file path="Micophone.exe">
+      <authenticode-sign />
+    </pe-file>
+  </zip-file>
+</artifact-configuration>

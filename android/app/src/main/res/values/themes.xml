@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Micophone" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+        <item name="colorSecondaryContainer">@color/secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/background</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorSurfaceContainerLow">@color/surface_container_low</item>
+        <item name="colorSurfaceContainer">@color/surface_container</item>
+        <item name="colorSurfaceContainerHigh">@color/surface_container_high</item>
+        <item name="colorSurfaceContainerHighest">@color/surface_container_highest</item>
+        <!-- Seamless system bars: the same colour as the screen, like the PC app's title bar. -->
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">@bool/light_bars</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">@bool/light_bars</item>
+    </style>
+</resources>

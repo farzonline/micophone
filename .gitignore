@@ -1,0 +1,26 @@
+# Signing secrets: never commit. Back these up somewhere safe instead.
+keystore.properties
+*.jks
+*.keystore
+
+# Build output. Binaries are published on GitHub Releases, not in git.
+release/
+pc/build/
+pc/dist/
+pc/build.spec
+**/__pycache__/
+android/.gradle/
+android/.kotlin/
+android/build/
+android/app/build/
+android/local.properties
+android/gradle/gradle-daemon-jvm.properties
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Local tooling
+graphify-out/
+.claude/

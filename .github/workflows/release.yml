@@ -1,0 +1,115 @@
+name: Release
+
+# Push a tag like v2.0.1 to build, sign and publish a release.
+# Signing needs one-time setup: see docs/RELEASING.md.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build Micophone.exe
+        run: pc\build.bat
+        shell: cmd
+
+      - name: Upload unsigned exe
+        id: unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: micophone-exe-unsigned
+          path: pc/dist/Micophone.exe
+
+      # Free code signing provided by SignPath.io, certificate by SignPath Foundation.
+      # Skipped until the SIGNPATH_ORGANIZATION_ID repository variable is set.
+      - name: Sign with SignPath
+        if: ${{ vars.SIGNPATH_ORGANIZATION_ID != '' }}
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: micophone
+          signing-policy-slug: release-signing
+          github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: signed
+
+      - name: Pick the exe to publish
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force out | Out-Null
+          $src = if (Test-Path signed/Micophone.exe) { "signed/Micophone.exe" } else { "pc/dist/Micophone.exe" }
+          "Publishing $src"
+          Copy-Item $src out/Micophone.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: micophone-exe
+          path: out/Micophone.exe
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Restore signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          # An unsigned APK can't be installed, so never publish one.
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "::error::ANDROID_KEYSTORE_BASE64 / ANDROID_KEYSTORE_PASSWORD secrets are missing (see docs/RELEASING.md)"
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 -d > release.jks
+          printf 'storeFile=release.jks\nstorePassword=%s\nkeyAlias=phonemic\nkeyPassword=%s\n' \
+            "$KEYSTORE_PASSWORD" "$KEYSTORE_PASSWORD" > keystore.properties
+        working-directory: android
+
+      - run: ./gradlew assembleRelease bundleRelease --console=plain
+        working-directory: android
+
+      - name: Collect
+        run: |
+          mkdir out
+          cp android/app/build/outputs/apk/release/app-release*.apk out/Micophone.apk
+          cp android/app/build/outputs/bundle/release/app-release.aab out/Micophone-play-store.aab
+      - uses: actions/upload-artifact@v4
+        with:
+          name: micophone-android
+          path: out/*
+
+  publish:
+    needs: [windows, android]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: micophone-exe
+          merge-multiple: true
+          path: files
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: micophone-android
+          merge-multiple: true
+          path: files
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -l files
+          gh release create "$GITHUB_REF_NAME" files/* --repo "$GITHUB_REPOSITORY" \
+            --title "Micophone ${GITHUB_REF_NAME#v}" --generate-notes

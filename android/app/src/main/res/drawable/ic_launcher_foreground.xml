@@ -1,0 +1,10 @@
+<!-- Same glyph as pc/assets/micophone.ico, on the 108-unit adaptive icon grid:
+     white strokes like the Farzonline logo, the capsule in its green with a soft glow. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#04FA73" android:fillAlpha="0.18"
+        android:pathData="M38,37 A16,16 0 0 1 70,37 L70,49 A16,16 0 0 1 38,49 Z" />
+    <path android:fillColor="#04FA73" android:pathData="M44,36 A10,10 0 0 1 64,36 L64,50 A10,10 0 0 1 44,50 Z" />
+    <path android:strokeColor="#F2F5F3" android:strokeWidth="5" android:strokeLineCap="round"
+        android:pathData="M36,54 A18,16 0 0 0 72,54 M54,70 L54,79 M45,80 L63,80" />
+</vector>

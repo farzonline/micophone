@@ -1,0 +1,32 @@
+name: Bug report
+description: Something doesn't work, disconnects, or sounds wrong.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you got instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Connection
+      options: [Wi-Fi, USB, Both / not sure]
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Micophone version (shown in the PC app), Windows version, phone model and Android version.
+      placeholder: "Micophone 2.0.0, Windows 11 23H2, Pixel 7 / Android 15"
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: Paste the end of `%LOCALAPPDATA%\Micophone\micophone.log`, and the phone's status text if it showed one.
+      render: text
